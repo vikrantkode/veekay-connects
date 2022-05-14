@@ -16,7 +16,7 @@ const LandingPage = () => {
           />
          <p className='font-medium'>A Single Destination to connect with your loved ones and share your momemts with them.</p>
          <button className=" w-[120px] p-3 rounded-md text-gray-700 bg-sky-400 hover:bg-sky-500 font-medium mt-6 mb-6">JOIN NOW</button>
-         <span className="font-bold">Already a member ? <button className='underline'>Sign In</button></span>
+         <span className="font-bold">Already a member ? <button className='underline hover:bg-sky-400 p-1 rounded-md'>Sign In</button></span>
         </div>
         
     </div>
