@@ -1,6 +1,6 @@
 import "./App.css";
 import {Routes, Route} from "react-router-dom"
-import { LandingPage, Login, Signup } from "./Pages/pages";
+import { Homepage, LandingPage, Login, Signup } from "./Pages";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Route path = "/" element = {<LandingPage/>}/>
         <Route path = "/login" element = {<Login/>}/>
         <Route path = "/signup" element = {<Signup/>}/>
+        <Route path = "/home" element ={<Homepage/>}/>
       </Routes>
     </div>
   );

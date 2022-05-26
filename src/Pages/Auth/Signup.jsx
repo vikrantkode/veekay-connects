@@ -24,8 +24,7 @@ const Signup = () => {
         dispatch(signUpUser(signUpCredentials))
           .unwrap()
           .then(() => {
-            navigate("/login");
-            alert("Login Successful")
+            navigate("/home");
           })
           .catch((err) => {
             console.log(err);
@@ -44,7 +43,7 @@ const Signup = () => {
           <img className="h-12" src={logo} alt="logo" />
         </div>
         <div className="">
-          <h3 className="mt-1 mb-4 font-medium text-xl">Sign Up</h3>
+          <h3 className="mt-1 mb-4 font-medium text-xl text-center">Sign Up</h3>
         </div>
         <div className="flex flex-col ">
           <div className="pt-2">
@@ -115,13 +114,13 @@ const Signup = () => {
         </div>
         <div>
           <button
-            className=" w-[120px] p-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-3 mb-3"
+            className=" w-full p-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-3 mb-3"
             type="submit"
             onClick={signUpClickHandler}
           >
             Signup
           </button>
-          <p>
+          <p className="text-center">
             <Link to="/login">Already have an Account</Link>
           </p>
         </div>

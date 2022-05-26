@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../Assets/logoImg.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logInUser } from "./authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Login = () => {
     dispatch(logInUser(userCredentials))
       .unwrap()
       .then(() => {
-        alert("Login Successful");
+        navigate("/home")
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +38,7 @@ const Login = () => {
     )
       .unwrap()
       .then(() => {
-        alert("hdbdbjndk");
+        navigate("/home")
       })
       .catch((err) => {
         console.log(err);
@@ -52,8 +53,7 @@ const Login = () => {
         </div>
         <div className="">
           <h3 className="mt-4 mb-4 font-medium text-xl">
-            {" "}
-            {!state.isUserLoggedIn ? <p> Login</p> : state.user.firstName}{" "}
+          <p className="text-center"> Login</p>
           </h3>
         </div>
         <div className="flex flex-col ">
@@ -86,7 +86,7 @@ const Login = () => {
         </div>
         <div>
           <button
-            className=" w-[120px] p-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-3 mb-3"
+            className="w-full p-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-3 mb-3"
             type="submit"
             onClick={loginClickHandler}
           >
@@ -101,7 +101,7 @@ const Login = () => {
               Login with Existing Credentials
             </button>
           </div>
-          <p>
+          <p className="text-center">
             <Link to="/signup">Create an Account</Link>
           </p>
         </div>
