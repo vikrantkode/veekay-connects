@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, LeftSidebar, RightSidebar, Search, CreatePost, PostCard } from "../Components/Components";
 
+
 const Homepage = () => {
   return (
     <div className="container w-full">
