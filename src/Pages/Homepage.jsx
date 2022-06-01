@@ -15,7 +15,7 @@ const Homepage = () => {
    if(token){
      dispatch(getAllPosts());
    }
-  },)
+  },[token,dispatch])
 
   return (
     <div className="container w-full">
