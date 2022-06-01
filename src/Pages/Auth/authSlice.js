@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
+import { toast } from "react-toastify"
 
 const initialState = {
     user : {},
@@ -15,7 +16,8 @@ export const logInUser = createAsyncThunk(
         try{
             const resp = await axios.post(`/api/auth/login`, userLoginCredentials)
             localStorage.setItem("token",resp.data.encodedToken)
-            return resp.data;
+            toast.success("Login Successfull.")
+            return resp.data;          
         }catch(err){
             console.log(err)
             return rejectWithValue(err)

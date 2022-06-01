@@ -3,12 +3,15 @@ import logo from "../../Assets/logoImg.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logInUser } from "./authSlice";
+import { Loader } from "../../Components/Loader";
+
+
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => state.auth);
-
+  const {token, loading} = state;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,13 +21,16 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log("useeff", state);
-  }, [state]);
+    console.log("useeff", token);
+  }, [token]);
 
-  const loginClickHandler = () => {
+  const loginClickHandler = (e) => {
+    e.preventDefault();
     dispatch(logInUser(userCredentials))
       .unwrap()
       .then(() => {
+        // toast.success("Login Successfull.")
+       // showToast("Login Successfull.", "success");
         navigate("/home")
       })
       .catch((err) => {
@@ -32,12 +38,38 @@ const Login = () => {
       });
   };
 
-  const loginDummyClickHandler = () => {
+  // const loginDummyClickHandler= async(e)=>{
+  //   e.preventDefault();
+  //   try{
+  //     const resp = dispatch(logInUser({ username: "vikrant2812@gmail.com", password: "vikrant12345" }))
+  //     console.log(resp)
+  //     if(resp?.error){
+  //       throw new Error("Invalid Credentials")
+  //     }
+  //     if(resp?.payload.encodedToken){
+  //       navigate(location.state?.from ?? "/home", {replace: true})
+  //     }
+  //   }catch(error){
+  //     console.log(error)
+  //   }
+  // }
+
+  const loginDummyClickHandler = (e) => {
+    e.preventDefault();
     dispatch(
       logInUser({ username: "vikrant2812@gmail.com", password: "vikrant12345" })
     )
       .unwrap()
       .then(() => {
+        // toast.success('🦄 Wow so easy!', {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   });
         navigate("/home")
       })
       .catch((err) => {
@@ -46,6 +78,7 @@ const Login = () => {
   };
 
   return (
+    
     <div className="container w-full h-screen flex flex-col justify-center items-center">
       <div className="w-1/3 shadow-xl px-10 py-10">
         <div className="flex justify-center items-center">
@@ -96,7 +129,9 @@ const Login = () => {
             <button
               className=" w-full p-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-3 mb-3"
               type="submit"
+              disabled={loading && <Loader/>}
               onClick={loginDummyClickHandler}
+
             >
               Login with Existing Credentials
             </button>
