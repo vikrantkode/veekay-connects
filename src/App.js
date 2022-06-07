@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Homepage, LandingPage, Login, Signup } from "./Pages";
 import { ProtectedRoute } from "./Routes/ProtectedRoute";
+import { Bookmark } from "./Pages/Bookmark";
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
           <ProtectedRoute>
             <Homepage />
           </ProtectedRoute>}
+        />
+        <Route path="/bookmarks" element={
+          <ProtectedRoute>
+          <Bookmark />
+        </ProtectedRoute>}
         />
       </Routes>
     </div>
