@@ -33,6 +33,7 @@ export const signUpUser = createAsyncThunk(
             const resp = await axios.post(`/api/auth/signup`,userSignUpCredentials)
             localStorage.setItem("token",resp.data.encodedToken)
             localStorage.setItem("user",JSON.stringify(resp.data.createdUser))
+            toast.success("Signup Successfull.")
             console.log("signup",resp.data)
             return resp.data;
         }catch(err){

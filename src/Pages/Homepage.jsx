@@ -18,7 +18,7 @@ const Homepage = () => {
   },[token,dispatch])
 
   return (
-    <div className="container w-full">
+    <div className="container relative w-full">
       <Navbar />
       <div className="w-full flex gap-x-8">
         <div className="w-1/4 mr-6">

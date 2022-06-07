@@ -21,7 +21,7 @@ const LeftSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to="/" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium'}>
+          <NavLink to="/bookmarks" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium'}>
             <div className="flex flex-row items-center mt-4 py-2 rounded-md hover:bg-blue-200">
             <div className='ml-2 '><FaBookmark/></div>
             < p className="ml-4">Bookmark</p>
@@ -35,7 +35,7 @@ const LeftSidebar = () => {
             </div>
           </NavLink>
 
-            <button className='w-full py-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-4'>Create New Post</button>
+            {/* <button className='w-full py-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500 font-medium mt-4'>Create New Post</button> */}
         </div>
     
     </aside>

@@ -1,16 +1,29 @@
 import axios from "axios"
+const token = localStorage.getItem('token')
 
 const getAllpostsServiceHandler = async() =>{
   return await axios.get(`/api/posts`)
 }
 
 const createPostServicehandler = async(createPostData) =>{
-    const token = localStorage.getItem('token')
     return await axios.post(`/api/posts`,{postData : createPostData}, {headers : {authorization : token}})
 }
 
 const deletePostServiceHandler = async(postId)=>{
-    const token = localStorage.getItem('token')
     return await axios.delete(`/api/posts/${postId}`, {headers: {authorization: token}})
 }
-export {getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler}
+
+const likePostServiceHandler = async(postId)=>{
+    return await axios.post(`/api/posts/like/${postId}`,{},{headers: {authorization: token}})
+}
+
+const dislikePostServiceHandler = async(postId)=>{
+    return await axios.post(`/api/posts/dislike/${postId}`,{},{headers: {authorization: token}})
+}
+
+const editPostServicehandler = async(postId, postData)=>{
+    console.log("inservice",postData)
+    return await axios.post(`/api/posts/edit/${postId}`,{postData : postData} , {headers : {authorization: token}} )
+}
+ 
+export {getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler}
