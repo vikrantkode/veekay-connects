@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { Loader } from "../Components/Loader";
 import { PostCard } from "../Components/PostCard";
 import { Navbar, LeftSidebar, RightSidebar } from "../Components/Components";
@@ -20,7 +19,7 @@ const Bookmark = () => {
         console.log(error)
       }
     })();
-  },[]);
+  },[dispatch]);
 
   const gettingBookmarkedPosts = posts.filter((post)=>bookmarks.includes(post._id))
 

@@ -69,6 +69,7 @@ const PostCard = ({ item }) => {
     }
   };
 
+  
   const bookmarkPostHandler = async () => {
     try {
       let resp;
