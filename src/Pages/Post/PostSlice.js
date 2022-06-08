@@ -14,6 +14,7 @@ export const getAllPosts = createAsyncThunk(
     async rejectWithValue=>{
         try{
             const resp = await getAllpostsServiceHandler();
+            console.log(resp)
             return resp.data;
         } catch (error) {
             console.log(error)

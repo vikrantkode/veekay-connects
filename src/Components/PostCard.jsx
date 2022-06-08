@@ -14,6 +14,7 @@ import {
   dislikePosts,
   likePosts,
 } from "../Pages/Post/PostSlice";
+import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ item }) => {
   const [editPostModalVisibility, setEditPostModalVisibility] = useState(false);
@@ -69,7 +70,6 @@ const PostCard = ({ item }) => {
     }
   };
 
-  
   const bookmarkPostHandler = async () => {
     try {
       let resp;
@@ -92,40 +92,42 @@ const PostCard = ({ item }) => {
       console.log(error);
     }
   };
-
+  const navigate = useNavigate();
   return (
     <>
       <div className="h-auto border-2 rounded-md p-2 bg-slate-100">
-        <div className="djd">
-          <div className="flex justify-between">
-            <div className="flex">
-              <img
-                src="https://res.cloudinary.com/mriant2812/image/upload/v1653508856/cld-sample.jpg"
-                alt="profile_pic"
-                className="h-8 w-8 rounded-full cursor-pointer self-center"
-              />
-              <h1 className="font-semibold ml-2">{firstName}</h1>
-              <p className="ml-4 text-gray-400">@{username}</p>
-            </div>
-            <div className="flex px-2 items-center">
-              <FiEdit
-                className="cursor-pointer  text-lg hover:bg-sky-100 rounded-2xl m-2 w-10"
-                onClick={() => setEditPostModalVisibility(true)}
-              />
-              {editPostModalVisibility && (
-                <ModalPost
-                  setEditPostModalVisibility={setEditPostModalVisibility}
-                  item={item}
+        <div className="djd" 
+        >
+            <div className="flex justify-between">
+              <div className="flex">
+                <img
+                  src="https://res.cloudinary.com/mriant2812/image/upload/v1653508856/cld-sample.jpg"
+                  alt="profile_pic"
+                  className="h-8 w-8 rounded-full cursor-pointer self-center"
                 />
-              )}
-              <MdDelete
-                className="cursor-pointer text-lg hover:bg-sky-100 rounded-2xl w-10"
-                onClick={deletePostHandler}
-              />
+                <h1 className="font-semibold ml-2">{firstName}</h1>
+                <p className="ml-4 text-gray-400">@{username}</p>
+              </div>
+              <div className="flex px-2 items-center">
+                <FiEdit
+                  className="cursor-pointer  text-lg hover:bg-sky-100 rounded-2xl m-2 w-10"
+                  onClick={() => setEditPostModalVisibility(true)}
+                />
+                {editPostModalVisibility && (
+                  <ModalPost
+                    setEditPostModalVisibility={setEditPostModalVisibility}
+                    item={item}
+                  />
+                )}
+                <MdDelete
+                  className="cursor-pointer text-lg hover:bg-sky-100 rounded-2xl w-10"
+                  onClick={deletePostHandler}
+                />
+              </div>
             </div>
-          </div>
-          <div className="mt-4 mb-4 px-6">
-            <p>{content}</p>
+            <div className="mt-4 mb-4 px-6">
+              <p>{content}</p>
+            </div>
           </div>
           <div className="flex items-center justify-around gap-4">
             <label className="flex items-center cursor-pointer ">
@@ -141,11 +143,11 @@ const PostCard = ({ item }) => {
                 {bookmarkBtn} Bookmark
               </button>
             </label>
-            <label className="flex items-center cursor-pointer">
-              <FaRegComment /> Comment
+            <label className="flex items-center cursor-pointer"
+              onClick={()=>navigate(`/post/${_id}`)}>
+            <button className="flex items-center"><FaRegComment /> Comment</button>
             </label>
           </div>
-        </div>
       </div>
     </>
   );

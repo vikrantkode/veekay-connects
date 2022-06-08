@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Homepage, LandingPage, Login, Signup } from "./Pages";
 import { ProtectedRoute } from "./Routes/ProtectedRoute";
 import { Bookmark } from "./Pages/Bookmark";
+import { SinglePost } from "./Pages/Post/SinglePost";
 
 function App() {
   return (
@@ -32,8 +33,13 @@ function App() {
         />
         <Route path="/bookmarks" element={
           <ProtectedRoute>
-          <Bookmark />
-        </ProtectedRoute>}
+            <Bookmark />
+          </ProtectedRoute>}
+        />
+        <Route path="/post/:postId" element={
+          <ProtectedRoute>
+            <SinglePost />
+          </ProtectedRoute>}
         />
       </Routes>
     </div>

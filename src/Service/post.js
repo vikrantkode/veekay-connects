@@ -22,8 +22,19 @@ const dislikePostServiceHandler = async(postId)=>{
 }
 
 const editPostServicehandler = async(postId, postData)=>{
-    console.log("inservice",postData)
     return await axios.post(`/api/posts/edit/${postId}`,{postData : postData} , {headers : {authorization: token}} )
 }
+
+const commentPostServiceHandler = async(postId, commentData)=>{
+    return await axios.post(`/api/comments/add/${postId}`,{commentData}, {headers : {authorization: token}} )
+}
+
+const deleteCommentServiceHandler = async(postId, commentId)=>{
+    return await axios.post(`/api/comments/delete/${postId}/${commentId}`,{headers : {authorization: token}} )
+}
+
+const editCommentServiceHandler = async(postId, commentId, commentData)=>{
+    return await axios.post(`/api/comments/edit/${postId}/${commentId}`,{commentData},{headers : {authorization: token}})
+}
  
-export {getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler}
+export {getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler, commentPostServiceHandler,deleteCommentServiceHandler,editCommentServiceHandler}

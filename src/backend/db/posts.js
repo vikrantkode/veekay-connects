@@ -16,7 +16,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    firstName:"PanditJi Ka Ladka",
+    firstName:"PanditJi",
     username: "sanskaaribaalak",
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -50,14 +50,14 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    firstName:"SharmaJi Ka Ladka",
+    firstName:"SharmaJi",
     username: "gyaanipurush",
 
     comments: [
       {
         _id: uuid(),
         username: "shubhamsoni",
-        text: "Interesting",
+        text: "Awesome",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -66,7 +66,77 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
-        text: "Wow!",
+        text: "Fantastic!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content:
+      "The operation, which involved booking Air India tickets through a two-decade old BPO company, IGT Solutions, without making payments to the airline ran smoothly until the second wave of Covid hit the country, after which it started to unravel and come apart at the seams.",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Indian Express",
+    username: "ie",
+
+    comments: [
+      {
+        _id: uuid(),
+        username: "Satyam",
+        text: "Great",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "Shivam",
+        text: "Good to hear",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content:
+      "“I went into a shell”- Chetan Sakariya honestly reveals how he felt after Delhi Capitals benched him for 11 matches in IPL 2022",
+    likes: {
+      likeCount: 112,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Chetan",
+    username: "chetan_sakariya",
+
+    comments: [
+      {
+        _id: uuid(),
+        username: "hardik",
+        text: "Koi ni bhai .. hota hai aisa kabhi kabhi",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "chahal",
+        text: "hard times shall pass",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
