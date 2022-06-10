@@ -146,4 +146,38 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id: uuid(),
+    content:
+      "Life is what you make it. Keep Hustling. !!",
+    likes: {
+      likeCount: 56,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Vikrant",
+    username: "vikrant2812@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "Vaibhav Mishra",
+        text: "Good bro..keep it up",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "Yatendra",
+        text: "Hustling OP",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
 ];
