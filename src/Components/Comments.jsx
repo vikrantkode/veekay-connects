@@ -4,22 +4,19 @@ import { useParams } from "react-router-dom";
 
 const getSinglePost = (state, postId) =>
   state.post.posts.find((post) => post._id === postId);
-
-  
   const Comments = () => {
   const { postId } = useParams();
   const post = useSelector((state) => getSinglePost(state, postId));
-  console.log("comment se", post.comments);
   const { comments } = post;
   const [listOfComments, setListOfcomments] = useState(comments ?? []);
 
-  const commentHandler = (listOfComments) => {
+  const commentHandler = (e) => {
+    e.preventDefault();
     setListOfcomments((prev) => [...prev, listOfComments]);
   };
 
   const CommentCreator = ({commentCreate},e) =>{
- 
-        e.preventDefault();
+       e.preventDefault();
         commentCreate(e.target.children[0].value);
       }
   

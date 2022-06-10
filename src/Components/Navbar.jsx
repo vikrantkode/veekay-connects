@@ -1,11 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import logoImg from "../Assets/logoImg.png"
 
 const Navbar = () => {
     const navigate = useNavigate();
     const logoutClickHandler = () =>{
         localStorage.clear();
+        toast.success("LoggedOut Successfully")
         navigate("/login");
     }
   return (

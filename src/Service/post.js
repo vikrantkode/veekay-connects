@@ -5,6 +5,10 @@ const getAllpostsServiceHandler = async() =>{
   return await axios.get(`/api/posts`)
 }
 
+const getUsersPostsServicehandler = async(username)=>{
+    return await axios.get(`/api/posts/user/${username}`)
+}
+
 const createPostServicehandler = async(createPostData) =>{
     return await axios.post(`/api/posts`,{postData : createPostData}, {headers : {authorization : token}})
 }
@@ -37,4 +41,4 @@ const editCommentServiceHandler = async(postId, commentId, commentData)=>{
     return await axios.post(`/api/comments/edit/${postId}/${commentId}`,{commentData},{headers : {authorization: token}})
 }
  
-export {getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler, commentPostServiceHandler,deleteCommentServiceHandler,editCommentServiceHandler}
+export {getAllpostsServiceHandler,getUsersPostsServicehandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler, commentPostServiceHandler,deleteCommentServiceHandler,editCommentServiceHandler}

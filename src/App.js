@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Homepage, LandingPage, Login, Signup } from "./Pages";
+import { Explore, Homepage, LandingPage, Login, OtherUserProfile, Profile, Signup } from "./Pages";
 import { ProtectedRoute } from "./Routes/ProtectedRoute";
 import { Bookmark } from "./Pages/Bookmark";
 import { SinglePost } from "./Pages/Post/SinglePost";
@@ -39,6 +39,21 @@ function App() {
         <Route path="/post/:postId" element={
           <ProtectedRoute>
             <SinglePost />
+          </ProtectedRoute>}
+        />
+         <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>}
+        />
+         <Route path="/user-profile/:userId" element={
+          <ProtectedRoute>
+            <OtherUserProfile />
+          </ProtectedRoute>}
+        />
+        <Route path="/explore" element={
+          <ProtectedRoute>
+            <Explore />
           </ProtectedRoute>}
         />
       </Routes>

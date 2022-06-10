@@ -14,7 +14,7 @@ const LeftSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to="/" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium'}>
+          <NavLink to="/explore" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium'}>
             <div className="flex flex-row items-center mt-4 py-2 rounded-md hover:bg-blue-200">
             <div className='ml-2'> <MdOutlineExplore/></div>
               <p className="ml-4">Explore</p>
@@ -28,7 +28,7 @@ const LeftSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to="/" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium '}>
+          <NavLink to="/profile" className={({ isActive }) =>isActive ? 'text-blue-500 font-bold' : ' font-medium '}>
             <div className="flex flex-row items-center mt-4 py-2 rounded-md hover:bg-blue-200">
               <div className='ml-2'><CgProfile/></div>
               <p className="ml-4">Profile</p>

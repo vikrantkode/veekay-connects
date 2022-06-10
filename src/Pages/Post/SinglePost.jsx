@@ -10,7 +10,6 @@ const SinglePost = () => {
   const navigate = useNavigate();
   const  post  = useSelector(state => getSinglePost(state,postId))
  
-  console.log("in single post clg", post)
   return (
     <div className="container relative w-full">
       <Navbar />
