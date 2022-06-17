@@ -17,7 +17,8 @@ const ProfileModal = ({setEditProfileModalVisibility}) => {
   const updateProfileHandler = () => {
     try{
       const resp = dispatch(updateUserProfile({userData : dataToUpdate}))
-      console.log(resp)
+      setUpdatedBio("")
+      setUpdatedLink("")
       if (resp?.error) 
         throw new Error("error in editig post");
         toast.success("Profile Updated Successfully");

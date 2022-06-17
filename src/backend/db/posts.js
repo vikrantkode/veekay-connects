@@ -180,4 +180,39 @@ export const posts = [
       },
     ],
   },
+  {
+    _id: uuid(),
+    content:
+      "Planning to learn Web Development. Any Resources Comment plzz... !!",
+    likes: {
+      likeCount: 56,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Vaibhav",
+    username: "mishra.vaibhav6@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "Abhinav Agarwal",
+        text: "Haan bhai..neoG camp join krle",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "Yatendra",
+        text: "Its very structured. you will love it",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    
+  },
 ];

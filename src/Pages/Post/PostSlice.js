@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { addBookmarkServiceHandler, deleteBookmarkServiceHandler, getAllBookmarksServiceHandler } from "../../Service/bookmark";
-import { getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler } from "../../Service/post";
+import { getAllpostsServiceHandler, createPostServicehandler, deletePostServiceHandler, likePostServiceHandler, dislikePostServiceHandler, editPostServicehandler, commentPostServiceHandler } from "../../Service/post";
 import { getUserPostsServiceHandler } from "../../Service/user";
 
 
@@ -144,6 +144,20 @@ export const deleteBookmarkPost = createAsyncThunk(
         }
     }
 )
+
+export const postComments = createAsyncThunk(
+    `posts/postComments`,
+    async({postId, commentData},{rejectWithValue})=>{
+        try{
+            const {data} = await commentPostServiceHandler(postId, commentData)
+            console.log("line 153",data)
+            return {data, postId}
+        }catch(error){
+            console.log(error);
+             return rejectWithValue(error.message)
+        }
+    }
+)
 const postSlice = createSlice({
     name: 'postSlice',
     initialState,
@@ -261,6 +275,18 @@ const postSlice = createSlice({
             state.bookmarks = action.payload.bookmarks;
         })
         .addCase(getAllBookmarkPost.rejected, state =>{
+            state.postLoading = false;
+            state.postError = "Error In getting bokmarked Post";
+        })
+        .addCase(postComments.pending, state => {
+            state.postLoading = true;
+        })
+        .addCase(postComments.fulfilled, (state,action)=>{
+            state.postLoading = false;
+            const index = state.posts.findIndex((item)=>item._id === action.payload.postId);
+            state.posts[index].comments = action.payload.data.comments;
+        })
+        .addCase(postComments.rejected, state =>{
             state.postLoading = false;
             state.postError = "Error In getting bokmarked Post";
         })
