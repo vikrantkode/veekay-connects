@@ -1,39 +1,40 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { postComments } from "../Pages/Post/PostSlice";
 
 const getSinglePost = (state, postId) =>
   state.post.posts.find((post) => post._id === postId);
   const Comments = () => {
   const { postId } = useParams();
   const post = useSelector((state) => getSinglePost(state, postId));
-  const { comments } = post;
-  const [listOfComments, setListOfcomments] = useState(comments ?? []);
+  // const {posts} = useSelector((item)=>item.post)
+  const [commentsInPost,setCommentsinPost] = useState("")
+  const listOfComments = [...post.comments].sort(
+        (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+      )
+  const dispatch = useDispatch  ();
 
   const commentHandler = (e) => {
     e.preventDefault();
-    setListOfcomments((prev) => [...prev, listOfComments]);
+    dispatch(postComments({postId: post._id,
+      commentData : {text : commentsInPost}}))
+      setCommentsinPost("");
+
   };
 
-  const CommentCreator = ({commentCreate},e) =>{
-       e.preventDefault();
-        commentCreate(e.target.children[0].value);
-      }
-  
-  const CommentList = ({ listOfComments }) => {
-    return (
-      <>
-        {listOfComments.map((listOfComments) => (
-          <div>{listOfComments}</div>
-        ))}
-      </>
-    );
-  };
+  // useEffect(()=>{
+  //   setListOfcomments( [...post.comments].sort(
+  //     (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+  //   ))
+  // },[post.comments])
+
   return (
     <>
       <div>
         <form className="flex  justify-center items-center"
-         onSubmit={commentHandler}>
+         onSubmit={commentHandler}
+         >
           <img
             src="https://res.cloudinary.com/mriant2812/image/upload/v1653508856/cld-sample.jpg"
             alt="profile_pic"
@@ -42,7 +43,8 @@ const getSinglePost = (state, postId) =>
           <textarea
             placeholder="Enter Comments"
             className="border-none h-10 p-2 ml-1 focus:outline-none w-full resize-none bg-slate-50"
-            // onChange={commentHandler}
+            onChange={(e)=>setCommentsinPost(e.target.value)}
+            value={commentsInPost}
           />
           <button
             className="w-[80px] py-1 ml-2 rounded-md text-black-700 bg-blue-400 hover:bg-blue-500  font-medium"
@@ -72,8 +74,8 @@ const getSinglePost = (state, postId) =>
               </div>
             ))
           :<>
-          <CommentCreator commentCreate={commentHandler} />
-          <CommentList listOfComments={listOfComments} />
+          {/* <CommentCreator commentCreate={commentHandler} />
+          <CommentList listOfComments={listOfComments} /> */}
           </>  }
       </div>
     </>

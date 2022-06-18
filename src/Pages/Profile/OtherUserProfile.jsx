@@ -7,7 +7,13 @@ const OtherUserProfile = () => {
     const {userId} = useParams();
     const { allUsers } = useSelector((state) => state.auth);
     const { posts, userPosts, postLoading } = useSelector((state)=>state.post)
+    console.log(posts)
+    console.log(userPosts)
     const individualUser = allUsers.users.find((obj)=>obj.userHandle === userId)
+    console.log(individualUser)
+
+    const singleUserPost = posts.filter((obj)=>obj.username === individualUser.username)
+    console.log("line 16",singleUserPost)
     
   return (
     <div className="container relative w-full">
@@ -40,7 +46,7 @@ const OtherUserProfile = () => {
               </div>
               <p className="text-gray-500 font-semibold mb-2 ml-4">{individualUser?.bio}</p>
               <div className="flex justify-around">
-                <span>{userPosts.length} Posts</span> 
+                <span>{singleUserPost.length} Posts</span> 
                 <span>{individualUser?.followers?.length} Followers</span>
                 <span>{individualUser?.following?.length} Following</span>
               </div>
@@ -54,8 +60,8 @@ const OtherUserProfile = () => {
           </div>
           {postLoading 
           ? <Loader/>
-          : posts?.length > 0 
-          ?( posts?.map((item)=><PostCard key={item._id} item={item}/>)
+          : singleUserPost?.length > 0 
+          ?( singleUserPost?.map((item)=><PostCard key={item._id} item={item}/>)
           ) 
           : (
           <div className="text-center">
